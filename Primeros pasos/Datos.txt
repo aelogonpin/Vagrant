@@ -70,3 +70,58 @@ Ese "*.box" se podra utiliza mediante estos comandos:
 vagrant box add my-box name-of-the-box.box
 vagrant init my-box
 vagrant up
+
+
+
+
+Borrar la imagen de centos
+
+vagrant box remove centos/7
+Instalar de nuevo el box de CentOS 7 desde el fichero “.box” en lugar de hacerlo desde Atlas:
+
+vagrant box add package.box --name centos/7
+
+
+
+Comprobar si están actualizadas las imágenes:
+
+vagrant box outdated --global
+En el caso de imágenes desactualizadas se pueden eliminar con:
+
+vagrant box prune
+Para actualizar el box correspondiente a un escenario se utiliza (sólo válido si se ha descargado de Atlas o similar):
+
+vagrant box update
+
+
+
+
+
+
+Crear un box de Vagrant desde una máquina virtual de VirtualBox.
+
+Obtenermos el nombre de la máquina virtual:
+
+   VBoxManage list vms
+La “empaquetamos” como un box de vagrant con:
+
+   vagrant package --base "Nombre de la MV" --output maquina.box
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
