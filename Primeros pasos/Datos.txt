@@ -108,6 +108,20 @@ La “empaquetamos” como un box de vagrant con:
    vagrant package --base "Nombre de la MV" --output maquina.box
 
 
+Aunque la configuración completa de las redes lo dejamos para una sección posterior, una funcionalidad muy útil y sencilla es la redirección de puertos de la red por defecto que utiliza Vagrant (red interna con NAT). Configura un Vagrantfile para que las peticiones al puerto 8080/tcp de la máquina anfitriona se redirijan al puerto 80/tcp de la máquina virtual.
+
+La documentación completa se encuentra en Forwarded Ports.
+
+   ...
+   config.vm.network "forwarded_port", guest: 80, host: 8080
+   ...
+Podemos ver en todo momento los puertos que se har redireccionado con la instrucción:
+
+   vagrant port
+Estos cambios se pueden realizar sobre una máquina ya funcionando y para que se apliquen se utiliza la opción:
+
+   vagrant reload
+
 
 
 
