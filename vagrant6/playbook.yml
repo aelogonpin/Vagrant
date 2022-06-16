@@ -1,0 +1,15 @@
+---
+- hosts: all
+  sudo: True
+  tasks: 
+    - name: Install last version of NGINX
+      apt: name=nginx state=latest
+     
+    - name: Start/Enable
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+     
+    - name: Instalacion de curl
+      apt: name=curl state=latest
