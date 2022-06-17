@@ -434,6 +434,33 @@ config.persistent_storage.volgroupname = 'myvolgroup'
 
 
 
+Sincroniza un directorio de la máquina host en la máquina guest; trabaja con las herramientas de tu máquina y, a la vez, compilar y/o ejecuta los recursos en la máquina guest.
+Por defecto vagrant comparte el directorio del proyecto (donde está el Vagrantfile) en el directorio /vagrant
+El sistema por defecto solo sincroniza cuando se hace vagrant up o vagrant reload. NO NOS VALE para desarrollar.
+Hay que usar rsync (unidirecional)
+config.vm.synced_folder ".", "/vagrant", type: "rsync"
+Y lanzar en el host el comando
+vagrant rsync-auto
+La sincronización se lleva a cabo desde host a guest
+O NFS o SMB (bidireccional):
+config.vm.synced_folder ".", "/vagrant", type: "nfs"
+Se requiere un servidor NFS (o SMB) en el host => se requiere red privada
+
+
+
+
+
+
+
+Forwarded ports
+config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: “127.0.0.1”
+Redes públicas
+config.vm.network "public_network"
+Redes privadas
+config.vm.network "private_network", ip: "192.168.33.10"
+
+
+
 
 
 
