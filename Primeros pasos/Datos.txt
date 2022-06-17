@@ -468,7 +468,14 @@ config.vm.network "private_network", ip: "192.168.33.10"
 
 
 
+Ejecutamos sobre el entorno recien creado
 
+vagrant package
+Obtenemos un fichero package.box (paquete) con la nueva box lista para servir como base de entornos vagrant
+
+Podemos importarla con
+
+vagrant add box package.box --name juanda/ubuntu16
 
 
 
